@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="img/Black and White Modern Circle Iniatial Logo.jpg">
+        <title>It's Me, Aravindan</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="nav-left">
+                <img src="img/Black and White Modern Circle Iniatial Logo.jpg" alt="Logo" class="logo">
+                <span class="nav-name">Aravindan</span>
+            </div>
+            <div class="nav-center">
+                <a href="#home">Home</a>
+                <a href="#about">About Me</a>
+                <a href="#projects">Projects</a>
+                <a href="#journey">My Journey</a>
+            </div>
+            <div class="nav-right">
+                <span class="email">bettercallaravindan@gmail.com</span>
+            </div>
+        </nav>
+        <section id="home" class="home-section">
+            <div class="home-content">
+                <div class="text-side">
+                    <h2>I, Me & Your Favourite, Aravindan</h2>
+                    <p>Hi, I'm Aravind — a passionate developer excited about building and learning in the tech world.</p>
+                    <div class="button-group">
+                        <a href="resume.pdf" class="btn " target="_blank">View Resume</a>
+                        <a href="#about" class="btn " target="_blank">Contact</a>
+                        <a href="https://www.linkedin.com/in/aravind-biju-884a08350/" class="btn " target="_blank">
+                            LinkedIn
+                        Profile
+                        </a>
+                    </div>
+                    <div class="inventory">
+                        <div class="tech-icons">
+                            <img src="icons/c.svg" alt="C" title="C">
+                            <img src="icons/cplusplus.svg" alt="C++" title="C++">
+                            <img src="icons/java.png" alt="Java" title="Java">
+                            <img src="icons/html5.svg" alt="HTML" title="HTML">
+                            <img src="icons/css.svg" alt="CSS" title="CSS">
+                            <img src="icons/php.svg" alt="PHP" title="PHP">
+                            <img src="icons/mysql.svg" alt="MySQL" title="MySQL">
+                            <img src="icons/figma.svg" alt="Figma" title="Figma">
+                            <img src="icons/javascript.svg" alt="JS" title="JS">
+                            <img src="icons/nodedotjs.svg" alt="Node" title="Node">
+                            <img src="icons/mongodb.svg" alt="Mongo" title="Mongo">
+                        </div>
+                    </div>
+                </div>
+                <div class="image-side">
+                    <img src="img/profile.jpg" alt="Profile" class="profile-img">
+                </div>
+            </div>
+        </section>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I'm currently pursuing a Master's in Computer Applications. I enjoy crafting clean UI, solving logical
+            problems, and continuously learning new technologies.
+            </p>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <p>
+                Some of my mini-projects include this portfolio, a to-do list app, and a weather checker. More coming soon as
+            I learn and build.
+            </p>
+        </section>
+        <section id="journey">
+            <h2>My Journey</h2>
+            <p>
+                From a curious learner to a tech enthusiast, my journey has been fueled by passion, mistakes, and
+            persistence. Stay tuned for the rest of the story.
+            </p>
+        </section>
+        <script src="js/script.js"></script>
+    </body>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".nav-center a");
+
+        function updateActiveLink() {
+            let index = sections.length;
+
+            while (--index >= 0 && window.scrollY + 150 < sections[index].offsetTop) { }
+
+            navLinks.forEach((link) => link.classList.remove("active"));
+            if (navLinks[index]) navLinks[index].classList.add("active");
+        }
+
+        updateActiveLink();
+        window.addEventListener("scroll", updateActiveLink);
+    });
+    </script>
+</html>
