@@ -325,6 +325,70 @@
           margin: auto;
       }
 
+      .about-carousel {
+          display: flex;
+          width: 100%;
+          height: 100%;
+          position: relative;
+          border-radius: 20px;
+      }
+
+      .about-carousel::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.55);
+          /* darker dim */
+          z-index: 3;
+          pointer-events: none;
+          transition: transform 0.5s ease-in-out;
+          border-radius: 16px;
+          transform: translateX(0%);
+      }
+
+      .about-carousel:hover::before {
+          transform: translateX(100%);
+      }
+
+      .about-carousel::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(35, 34, 34, 0.3);
+          /* <-- dim filter */
+          z-index: 2;
+          pointer-events: none;
+          border-radius: 16px;
+      }
+
+      .carousel-img {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0;
+          transition: opacity 1s ease-in-out;
+          border-radius: 16px;
+          z-index: 1;
+      }
+
+      .carousel-img.active {
+          opacity: 1;
+          z-index: 1;
+      }
+
+      .image-card {
+          padding: 0;
+          overflow: hidden;
+          height: 300px;
+      }
+
 
 
       /* Responsive tweaks */

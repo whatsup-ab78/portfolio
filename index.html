@@ -85,9 +85,17 @@
             </div>
 
             <!-- Placeholder for Image -->
-            <div class="about-image-placeholder">
-                <!-- <img src="img/about.jpg" alt="About Image"> -->
+            <div class="about-card image-card">
+                <div class="about-carousel">
+                    <img src="img/YIP.png" alt="About Image 1" class="carousel-img active">
+                    <img src="img/Presentation.png" alt="About Image 2" class="carousel-img">
+                    <img src="img/fig.png" alt="About Image 3" class="carousel-img">
+                    <img src="img/Yip certificate.jpg" alt="About Image 4" class="carousel-img">
+                    <img src="img/Publication.png" alt="About Image 4" class="carousel-img">
+                </div>
             </div>
+
+
 
             <!-- Box 3: Achievements -->
             <div class="about-card achievements-card">
@@ -130,25 +138,41 @@
             persistence. Stay tuned for the rest of the story.
         </p>
     </section>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll(".nav-center a");
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-center a");
 
-        function updateActiveLink() {
-            let index = sections.length;
+            function updateActiveLink() {
+                let index = sections.length;
 
-            while (--index >= 0 && window.scrollY + 150 < sections[index].offsetTop) { }
+                while (--index >= 0 && window.scrollY + 150 < sections[index].offsetTop) { }
 
-            navLinks.forEach((link) => link.classList.remove("active"));
-            if (navLinks[index]) navLinks[index].classList.add("active");
-        }
+                navLinks.forEach((link) => link.classList.remove("active"));
+                if (navLinks[index]) navLinks[index].classList.add("active");
+            }
 
-        updateActiveLink();
-        window.addEventListener("scroll", updateActiveLink);
-    });
+            updateActiveLink();
+            window.addEventListener("scroll", updateActiveLink);
+        });
 
-</script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const images = document.querySelectorAll(".carousel-img");
+            let current = 0;
+
+            function showNextImage() {
+                images[current].classList.remove("active");
+                current = (current + 1) % images.length;
+                images[current].classList.add("active");
+            }
+
+            images[current].classList.add("active");
+            setInterval(showNextImage, 4000); // change every 3 seconds
+        });
+
+        
+
+    </script>
 
 
 
