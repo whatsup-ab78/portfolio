@@ -12,18 +12,62 @@ body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     scroll-behavior: smooth;
+    position: relative; /* Needed for z-index stacking */
+    overflow-x: hidden; /* Prevents horizontal scroll from floating icons */
 }
 
-.home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 5vh 5vw;
-    min-height: 100vh;
-    position: relative;
-    z-index: 1;
+/* --- Floating Background Images --- */
+.bg-image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; /* Place it behind all content */
+    overflow: hidden;
 }
+
+.floating-img {
+    position: absolute;
+    opacity: 0.15; /* Make them subtle */
+    filter: brightness(0.4) invert(1); /* Dark and matching theme */
+    animation: float 20s infinite linear;
+    user-select: none;
+}
+
+/* Keyframes for the floating animation */
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.15;
+    }
+    50% {
+        transform: translateY(-15vh) translateX(10vw) rotate(180deg);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(0) rotate(360deg);
+        opacity: 0.15;
+    }
+}
+
+/* Second animation for more variety */
+@keyframes float2 {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.2;
+    }
+    50% {
+        transform: translateY(10vh) translateX(-15vw) rotate(-180deg);
+        opacity: 0.15;
+    }
+    100% {
+        transform: translateY(0) rotate(-360deg);
+        opacity: 0.2;
+    }
+}
+
+/* --- All other styles remain the same until the #about section --- */
 
 nav.navbar {
     display: flex;
@@ -154,10 +198,12 @@ section {
     padding: 120px 20px 80px;
     min-height: 100vh;
     text-align: center;
+    position: relative; /* Ensure sections stay on top of background */
+    z-index: 1;
 }
 
 h2 {
-    margin-bottom: 20px;
+    margin-top: 20px;
     font-size: 2rem;
 }
 
@@ -213,17 +259,22 @@ p {
     transform: scale(1.1);
 }
 
+/* --- REVISED About Section --- */
+
 #about {
-    padding-top: 80px;
     padding: 80px 30px;
-    background-color: #000000;
+    background-color: transparent; /* Makes background images visible */
     color: #fff;
 }
 
 .about-grid {
-    padding-top: 40px;
+    padding-top: 30px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Adjusted grid for better balance */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+        "foundation toolkit"
+        "milestones connect";
     gap: 30px;
     max-width: 1100px;
     margin: 0 auto;
@@ -237,12 +288,14 @@ p {
     border-radius: 16px;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left; /* Better for lists */
 }
 
 .about-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
 }
+
 
 .about-card h2 {
     font-size: 1.4rem;
@@ -256,33 +309,12 @@ p {
     text-shadow: 0 0 1px rgb(141, 149, 149), 0 0 2.5px rgb(141, 149, 149);
 }
 
+
 .about-card ul {
     list-style: none;
     padding: 0;
     color: #ccc;
     line-height: 1.6;
-}
-
-.achievements-card {
-    grid-column: span 2;
-}
-
-.social-card .social-links {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.social-card .social-links a {
-    color: #ccc;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s, transform 0.3s;
-}
-
-.social-card .social-links a:hover {
-    color: #fff;
-    transform: translateX(5px);
 }
 
 .about-card ul li {
@@ -291,71 +323,57 @@ p {
     line-height: 1.5;
 }
 
-.about-carousel {
+.about-card ul i {
+    color: #999;
+    font-size: 0.9em;
+}
+
+/* No longer needed, as it spans the full width of its area now */
+.achievements-card {
+    grid-area: milestones;
+}
+
+.social-card {
+    /* Better align the title and icons */
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-card .social-links {
+    display: flex;
+    flex-direction: row; /* Arrange icons horizontally */
+    justify-content: center;
+    gap: 30px; /* Space between icons */
+    margin-top: 15px; /* Space below the heading */
     width: 100%;
-    height: 100%;
-    position: relative;
-    border-radius: 20px;
 }
 
-.about-carousel::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.55);
-    z-index: 3;
-    pointer-events: none;
-    transition: transform 0.5s ease-in-out;
-    border-radius: 16px;
-    transform: translateX(0%);
+.social-card .social-links a {
+    color: #ccc;
+    font-size: 1.8rem; /* Make icons larger */
+    text-decoration: none;
+    transition: color 0.3s, transform 0.3s;
 }
 
-.about-carousel:hover::before {
-    transform: translateX(100%);
+.social-card .social-links a:hover {
+    color: #fff;
+    transform: translateY(-5px); /* Lifts the icon up */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7); /* Adds a subtle white glow */
 }
 
-.about-carousel::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(35, 34, 34, 0.3);
-    z-index: 2;
-    pointer-events: none;
-    border-radius: 16px;
-}
 
-.carousel-img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    border-radius: 16px;
-    z-index: 1;
-}
 
-.carousel-img.active {
-    opacity: 1;
-    z-index: 1;
-}
-
+/* Remove all carousel and image card styles */
+.about-carousel,
+.carousel-img,
 .image-card {
-    padding: 0;
-    overflow: hidden;
-    height: 300px;
+    display: none;
 }
 
 /* --- RESPONSIVE STYLES --- */
 
-/* For Tablets */
 @media (max-width: 1024px) {
     .nav-center a {
         margin: 0 10px;
@@ -365,12 +383,10 @@ p {
     }
 }
 
-/* For Mobile Phones */
 @media (max-width: 820px) {
-    /* --- Mobile Navbar --- */
     .nav-links-wrapper {
         position: fixed;
-        top: 80px; /* Below navbar */
+        top: 80px;
         left: 0;
         width: 100%;
         height: calc(100vh - 80px);
@@ -380,13 +396,13 @@ p {
         justify-content: center;
         align-items: center;
         gap: 40px;
-        transform: translateY(-120%); /* Hide off-screen */
+        transform: translateY(-120%);
         transition: transform 0.4s ease-in-out;
         padding-bottom: 80px;
     }
 
     .nav-links-wrapper.active {
-        transform: translateY(0); /* Slide in */
+        transform: translateY(0);
     }
 
     .nav-center {
@@ -399,7 +415,7 @@ p {
         color: #fff;
         font-size: 1.4rem;
     }
-    
+
     .nav-center a.active {
         border-bottom-color: #fff;
     }
@@ -407,24 +423,23 @@ p {
     .nav-right {
         margin-top: 20px;
     }
-    
+
     .nav-right .email {
         color: #ccc;
         font-size: 1rem;
     }
 
     .hamburger {
-        display: block; /* Show hamburger */
+        display: block;
     }
 
-    /* --- Mobile Home Section --- */
     .home-section {
         padding-top: 100px;
         padding-bottom: 60px;
     }
-    
+
     .home-content {
-        flex-direction: column-reverse; /* Image on top */
+        flex-direction: column-reverse;
         text-align: center;
         gap: 40px;
     }
@@ -456,21 +471,25 @@ p {
         justify-content: center;
         gap: 20px;
     }
-    
-    /* --- Mobile General Sections & About Grid --- */
+
     section {
         padding: 100px 20px 60px;
     }
 
     .about-grid {
         grid-template-columns: 1fr; /* Single column */
+        grid-template-areas:
+            "foundation"
+            "toolkit"
+            "milestones"
+            "connect";
         gap: 20px;
     }
 
     .achievements-card {
-        grid-column: span 1; /* Reset span */
+        grid-column: 1; /* Reset span */
     }
-    
+
     .about-card {
         text-align: center;
     }
