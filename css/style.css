@@ -571,6 +571,89 @@ p {
     /* Space between text and icon */
 }
 
+/* --- Footer Section --- */
+footer {
+    padding: 10px 2rem 20px;
+    background: rgba(15, 15, 15, 0.6);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    position: relative;
+    margin-top: 50px;
+    /* Space above the footer */
+}
+
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto 17px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-info {
+    text-align: left;
+}
+
+
+.footer-info p {
+    font-size: 1rem;
+    color: #ccc;
+    max-width: 400px;
+    margin: 0;
+    place-items: center;
+}
+
+.footer-social-and-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-social-links a {
+    color: #ccc;
+    font-size: 1.6rem;
+    transition: color 0.5s ease, transform 0.5s ease;
+}
+
+.footer-social-links a:hover {
+    color: #fff;
+    transform: translateY(-4px);
+}
+
+.footer-back-to-top a {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: background-color 0.5s ease, transform 0.5s ease; 
+}
+
+.footer-back-to-top a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
 
 
 /* --- RESPONSIVE STYLES --- */
@@ -700,5 +783,26 @@ p {
 
     .social-card .social-links a:hover {
         transform: translateX(0);
+    }
+
+    .footer-content {
+        flex-direction: column;
+        /* Stack items vertically */
+        text-align: center;
+    }
+
+    .footer-info {
+        text-align: center;
+    }
+
+    .footer-info p {
+        margin: 0 auto;
+        /* Center the paragraph text */
+    }
+
+    .footer-social-and-nav {
+        margin-top: 20px;
+        flex-direction: column;
+        gap: 25px;
     }
 }
