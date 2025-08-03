@@ -16,16 +16,24 @@
             <img src="img/Black and White Modern Circle Iniatial Logo.jpg" alt="Logo" class="logo">
             <span class="nav-name">Aravindan</span>
         </div>
-        <div class="nav-center">
-            <a href="#home">Home</a>
-            <a href="#about">About Me</a>
-            <a href="#projects">Projects</a>
-            <a href="#journey">My Journey</a>
+        <!-- Wrapper for links and email, for mobile menu -->
+        <div class="nav-links-wrapper">
+            <div class="nav-center">
+                <a href="#home">Home</a>
+                <a href="#about">About Me</a>
+                <a href="#projects">Projects</a>
+                <a href="#journey">My Journey</a>
+            </div>
+            <div class="nav-right">
+                <span class="email">bettercallaravindan@gmail.com</span>
+            </div>
         </div>
-        <div class="nav-right">
-            <span class="email">bettercallaravindan@gmail.com</span>
-        </div>
+        <!-- Hamburger button -->
+        <button class="hamburger" id="hamburger-button" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
     </nav>
+
     <section id="home" class="home-section">
         <div class="home-content">
             <div class="text-side">
@@ -35,8 +43,7 @@
                     <a href="resume.pdf" class="btn " target="_blank">View Resume</a>
                     <a href="#about" class="btn ">Contact</a>
                     <a href="https://www.linkedin.com/in/aravind-biju-884a08350/" class="btn " target="_blank">
-                        LinkedIn
-                        Profile
+                        LinkedIn Profile
                     </a>
                 </div>
                 <div class="tech-icons">
@@ -59,10 +66,10 @@
             </div>
         </div>
     </section>
+
     <section id="about">
         <div id="about-particles"></div>
         <div class="about-grid">
-
             <!-- Box 1: Education -->
             <div class="about-card">
                 <h2>What I Learned?</h2>
@@ -71,7 +78,6 @@
                     <li><strong>Bachelor of Computer Applications</strong><br>KCMT, Changanassery, 2021–2024</li>
                 </ul>
             </div>
-
             <!-- Box 2: Services -->
             <div class="about-card">
                 <h2>What I am Good At?</h2>
@@ -83,7 +89,6 @@
                     <li>Basic Full Stack Projects (MERN)</li>
                 </ul>
             </div>
-
             <!-- Placeholder for Image -->
             <div class="about-card image-card">
                 <div class="about-carousel">
@@ -94,9 +99,6 @@
                     <img src="img/Publication.png" alt="About Image 4" class="carousel-img">
                 </div>
             </div>
-
-
-
             <!-- Box 3: Achievements -->
             <div class="about-card achievements-card">
                 <h2>What I Achieved?</h2>
@@ -107,7 +109,6 @@
                     <li>And Many More....</li>
                 </ul>
             </div>
-
             <!-- Box 4: Social Links -->
             <div class="about-card social-card">
                 <h2>Connect With Me</h2>
@@ -118,65 +119,85 @@
                     <a href="">+91 85xxxxxxxx</a>
                 </div>
             </div>
-
-
         </div>
     </section>
 
     <section id="projects">
         <h2>Projects</h2>
         <p>
-            Some of my mini-projects include this portfolio, a to-do list app, and a weather checker. More coming soon
-            as
-            I learn and build.
+            Some of my mini-projects include this portfolio, a to-do list app, and a weather checker. More coming soon as I learn and build.
         </p>
     </section>
+
     <section id="journey">
         <h2>My Journey</h2>
         <p>
-            From a curious learner to a tech enthusiast, my journey has been fueled by passion, mistakes, and
-            persistence. Stay tuned for the rest of the story.
+            From a curious learner to a tech enthusiast, my journey has been fueled by passion, mistakes, and persistence. Stay tuned for the rest of the story.
         </p>
     </section>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // --- Script for active nav link on scroll ---
             const sections = document.querySelectorAll("section");
-            const navLinks = document.querySelectorAll(".nav-center a");
-
+            const navLinksDesktop = document.querySelectorAll(".nav-center a");
             function updateActiveLink() {
                 let index = sections.length;
-
-                while (--index >= 0 && window.scrollY + 150 < sections[index].offsetTop) { }
-
-                navLinks.forEach((link) => link.classList.remove("active"));
-                if (navLinks[index]) navLinks[index].classList.add("active");
+                while (--index >= 0 && window.scrollY + 150 < sections[index].offsetTop) {}
+                navLinksDesktop.forEach((link) => link.classList.remove("active"));
+                if (navLinksDesktop[index]) navLinksDesktop[index].classList.add("active");
             }
-
             updateActiveLink();
             window.addEventListener("scroll", updateActiveLink);
-        });
 
-        document.addEventListener("DOMContentLoaded", () => {
+            // --- Script for image carousel ---
             const images = document.querySelectorAll(".carousel-img");
             let current = 0;
-
             function showNextImage() {
+                if (images.length === 0) return;
                 images[current].classList.remove("active");
                 current = (current + 1) % images.length;
                 images[current].classList.add("active");
             }
+            if (images.length > 0) {
+                 images[current].classList.add("active");
+                 setInterval(showNextImage, 4000);
+            }
 
-            images[current].classList.add("active");
-            setInterval(showNextImage, 4000); // change every 3 seconds
+            // --- Script for hamburger menu ---
+            const hamburgerButton = document.getElementById("hamburger-button");
+            const navLinksWrapper = document.querySelector(".nav-links-wrapper");
+            const navLinksMobile = document.querySelectorAll(".nav-center a");
+            const body = document.querySelector("body");
+
+            hamburgerButton.addEventListener("click", () => {
+                navLinksWrapper.classList.toggle("active");
+                const icon = hamburgerButton.querySelector("i");
+                if (navLinksWrapper.classList.contains("active")) {
+                    icon.classList.remove("fa-bars");
+                    icon.classList.add("fa-times");
+                    body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+                } else {
+                    icon.classList.remove("fa-times");
+                    icon.classList.add("fa-bars");
+                    body.style.overflow = 'auto';
+                }
+            });
+
+            // Close menu when a link is clicked
+            navLinksMobile.forEach(link => {
+                link.addEventListener("click", () => {
+                    if (navLinksWrapper.classList.contains("active")) {
+                        navLinksWrapper.classList.remove("active");
+                        const icon = hamburgerButton.querySelector("i");
+                        icon.classList.remove("fa-times");
+                        icon.classList.add("fa-bars");
+                        body.style.overflow = 'auto';
+                    }
+                });
+            });
         });
-
-        
-
     </script>
-
-
-
 </body>
-
 
 </html>
