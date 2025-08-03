@@ -143,24 +143,31 @@ body {
 
 /* --- All other styles remain the same until the #about section --- */
 
+/* --- New Attractive Navbar Styles --- */
 nav.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem;
-    background-color: #fff;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    height: 80px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.25rem 2rem;
+    /* Adjusted padding */
+    height: 75px;
+
+    /* Glassmorphism Effect */
+    background: rgba(10, 10, 10, 0.5);
+    /* Semi-transparent background */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-left {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .logo {
@@ -172,7 +179,8 @@ nav.navbar {
 .nav-name {
     font-size: 1.4rem;
     font-weight: bold;
-    color: #000;
+    color: #fff;
+    /* Changed to white */
 }
 
 .nav-links-wrapper {
@@ -182,37 +190,64 @@ nav.navbar {
 }
 
 .nav-center a {
-    color: #000;
+    color: #ccc;
+    /* Changed to light grey */
     text-decoration: none;
     margin: 0 15px;
     font-weight: 500;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
+    font-size: 1rem;
+    padding: 5px 0;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .nav-center a:hover {
-    color: #666;
+    color: #fff;
+    /* Brighter white on hover */
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
 }
 
 .nav-center a.active {
-    border-bottom: 2px solid #000;
+    color: #fff;
+    /* Active link is white */
+    border-bottom: 2px solid #fff;
+    /* White underline */
     font-weight: bold;
 }
 
 .nav-right .email {
     font-size: 0.95rem;
-    color: #555;
+    color: #aaa;
+    /* Changed to a dimmer grey */
 }
 
 .hamburger {
     display: none;
     background: none;
     border: none;
-    color: #000;
+    color: #fff;
+    /* Changed to white */
     font-size: 1.5rem;
     cursor: pointer;
     z-index: 101;
 }
+
+/* --- Floating effect for Desktop Screens --- */
+@media (min-width: 821px) {
+    nav.navbar {
+        top: 20px;
+        /* Push down from the top */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95%;
+        max-width: 1200px;
+        border-radius: 50px;
+        /* Rounded corners for the floating pill look */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Full border instead of just bottom */
+    }
+}
+
+/* Navbar ends */
 
 .home-section {
     display: flex;
