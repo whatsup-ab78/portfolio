@@ -1,3 +1,68 @@
+/* --- Loader Styles --- */
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* Ensures it's on top of everything */
+    transition: opacity 0.75s ease;
+    /* Smooth fade-out */
+}
+
+/* Container for the logo and text */
+.loader-logo-container {
+    text-align: center;
+}
+
+/* The spinning/pulsing logo */
+.loader-logo {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    animation: pulse 2.3s infinite ease-in-out;
+    /* Slower pulse for a calmer feel */
+}
+
+/* The text below the logo */
+.loader-text {
+    color: #fff;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+/* Keyframe animation for the pulse effect */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+/* Class to hide the loader */
+#loader-wrapper.hidden {
+    opacity: 0;
+    pointer-events: none;
+    /* Disables interaction when invisible */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,8 +77,10 @@ body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     scroll-behavior: smooth;
-    position: relative; /* Needed for z-index stacking */
-    overflow-x: hidden; /* Prevents horizontal scroll from floating icons */
+    position: relative;
+    /* Needed for z-index stacking */
+    overflow-x: hidden;
+    /* Prevents horizontal scroll from floating icons */
 }
 
 /* --- Floating Background Images --- */
@@ -23,14 +90,17 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: -1; /* Place it behind all content */
+    z-index: -1;
+    /* Place it behind all content */
     overflow: hidden;
 }
 
 .floating-img {
     position: absolute;
-    opacity: 0.15; /* Make them subtle */
-    filter: brightness(0.4) invert(1); /* Dark and matching theme */
+    opacity: 0.15;
+    /* Make them subtle */
+    filter: brightness(0.4) invert(1);
+    /* Dark and matching theme */
     animation: float 20s infinite linear;
     user-select: none;
 }
@@ -41,10 +111,12 @@ body {
         transform: translateY(0) rotate(0deg);
         opacity: 0.15;
     }
+
     50% {
         transform: translateY(-15vh) translateX(10vw) rotate(180deg);
         opacity: 0.2;
     }
+
     100% {
         transform: translateY(0) rotate(360deg);
         opacity: 0.15;
@@ -57,10 +129,12 @@ body {
         transform: translateY(0) rotate(0deg);
         opacity: 0.2;
     }
+
     50% {
         transform: translateY(10vh) translateX(-15vw) rotate(-180deg);
         opacity: 0.15;
     }
+
     100% {
         transform: translateY(0) rotate(-360deg);
         opacity: 0.2;
@@ -198,7 +272,8 @@ section {
     padding: 120px 20px 80px;
     min-height: 100vh;
     text-align: center;
-    position: relative; /* Ensure sections stay on top of background */
+    position: relative;
+    /* Ensure sections stay on top of background */
     z-index: 1;
 }
 
@@ -263,7 +338,8 @@ p {
 
 #about {
     padding: 80px 30px;
-    background-color: transparent; /* Makes background images visible */
+    background-color: transparent;
+    /* Makes background images visible */
     color: #fff;
 }
 
@@ -288,7 +364,8 @@ p {
     border-radius: 16px;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: left; /* Better for lists */
+    text-align: left;
+    /* Better for lists */
 }
 
 .about-card:hover {
@@ -328,13 +405,11 @@ p {
     font-size: 0.9em;
 }
 
-/* No longer needed, as it spans the full width of its area now */
 .achievements-card {
     grid-area: milestones;
 }
 
 .social-card {
-    /* Better align the title and icons */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -343,34 +418,125 @@ p {
 
 .social-card .social-links {
     display: flex;
-    flex-direction: row; /* Arrange icons horizontally */
+    flex-direction: row;
+    /* Arrange icons horizontally */
     justify-content: center;
-    gap: 30px; /* Space between icons */
-    margin-top: 15px; /* Space below the heading */
+    gap: 30px;
+    /* Space between icons */
+    margin-top: 15px;
+    /* Space below the heading */
     width: 100%;
 }
 
 .social-card .social-links a {
     color: #ccc;
-    font-size: 1.8rem; /* Make icons larger */
+    font-size: 1.8rem;
+    /* Make icons larger */
     text-decoration: none;
     transition: color 0.3s, transform 0.3s;
 }
 
 .social-card .social-links a:hover {
     color: #fff;
-    transform: translateY(-5px); /* Lifts the icon up */
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7); /* Adds a subtle white glow */
+    transform: translateY(-5px);
+    /* Lifts the icon up */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+    /* Adds a subtle white glow */
+}
+
+/* --- Projects Section --- */
+
+#projects {
+    background-color: transparent;
+    /* Allows background icons to show through */
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto 0;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    border-radius: 16px;
+    overflow: hidden;
+    /* Important for keeping image corners rounded */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease-in-out;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+    /* Subtle zoom effect on hover */
+}
+
+.project-info {
+    padding: 25px;
+}
+
+.project-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.project-tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.project-tech-list span {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.project-links {
+    display: flex;
+    gap: 15px;
+}
+
+.project-links .btn i {
+    margin-left: 8px;
+    /* Space between text and icon */
 }
 
 
-
-/* Remove all carousel and image card styles */
-.about-carousel,
-.carousel-img,
-.image-card {
-    display: none;
-}
 
 /* --- RESPONSIVE STYLES --- */
 
@@ -378,6 +544,7 @@ p {
     .nav-center a {
         margin: 0 10px;
     }
+
     .text-side h2 {
         font-size: 2rem;
     }
@@ -477,7 +644,8 @@ p {
     }
 
     .about-grid {
-        grid-template-columns: 1fr; /* Single column */
+        grid-template-columns: 1fr;
+        /* Single column */
         grid-template-areas:
             "foundation"
             "toolkit"
@@ -487,7 +655,8 @@ p {
     }
 
     .achievements-card {
-        grid-column: 1; /* Reset span */
+        grid-column: 1;
+        /* Reset span */
     }
 
     .about-card {

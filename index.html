@@ -11,31 +11,40 @@
 </head>
 
 <body>
+    <!-- START of the Loader HTML -->
+    <div id="loader-wrapper">
+        <div class="loader-logo-container">
+            <img src="img/Black and White Modern Circle Iniatial Logo.jpg" alt="Logo" class="loader-logo">
+            <p class="loader-text">Hold Tight...</p>
+        </div>
+    </div>
+    <!-- END of the Loader HTML -->
+
     <!-- Container for Floating Background Images -->
     <div class="bg-image-container">
         <!-- Existing Icons -->
         <img src="icons/react.svg" alt="floating icon" class="floating-img"
             style="top: 15%; left: 10%; width: 80px; animation-name: float; animation-duration: 25s;">
         <img src="icons/nodedotjs.svg" alt="floating icon" class="floating-img"
-            style="top: 10%; left: 80%; width: 60px; animation-name: float2; animation-duration: 30s; animation-delay: 5s;">
+            style="top: 10%; left: 80%; width: 60px; animation-name: float2; animation-duration: 30s; animation-delay: 0s;">
         <img src="icons/mongodb.svg" alt="floating icon" class="floating-img"
             style="top: 80%; left: 20%; width: 90px; animation-name: float; animation-duration: 35s;">
         <img src="icons/figma.svg" alt="floating icon" class="floating-img"
-            style="top: 65%; left: 5%; width: 70px; animation-name: float2; animation-duration: 22s; animation-delay: 8s;">
+            style="top: 65%; left: 5%; width: 70px; animation-name: float2; animation-duration: 22s; animation-delay: 0s;">
 
         <!-- Added Java and More Icons -->
         <img src="icons/php.svg" alt="floating icon" class="floating-img"
-            style="top: 20%; left: 80%; width: 50px; animation-name: float; animation-duration: 28s; animation-delay: 2s;">
+            style="top: 20%; left: 80%; width: 50px; animation-name: float; animation-duration: 28s; animation-delay: 0s;">
         <img src="icons/html5.svg" alt="floating icon" class="floating-img"
-            style="top: 30%; left: 30%; width: 65px; animation-name: float2; animation-duration: 32s; animation-delay: 1s;">
+            style="top: 30%; left: 30%; width: 65px; animation-name: float2; animation-duration: 32s; animation-delay: 0s;">
         <img src="icons/css.svg" alt="floating icon" class="floating-img"
-            style="top: 85%; left: 85%; width: 65px; animation-name: float; animation-duration: 26s; animation-delay: 4s;">
+            style="top: 85%; left: 85%; width: 65px; animation-name: float; animation-duration: 26s; animation-delay: 0s;">
         <img src="icons/javascript.svg" alt="floating icon" class="floating-img"
             style="top: 5%; left: 5%; width: 55px; animation-name: float2; animation-duration: 29s;">
         <img src="icons/cplusplus.svg" alt="floating icon" class="floating-img"
-            style="top: 90%; left: 50%; width: 70px; animation-name: float; animation-duration: 24s; animation-delay: 6s;">
+            style="top: 90%; left: 50%; width: 70px; animation-name: float; animation-duration: 24s; animation-delay: 0s;">
         <img src="icons/java.png" alt="floating icon" class="floating-img"
-            style="top: 50%; left: 50%; width: 80px; animation-name: float2; animation-duration: 38s; animation-delay: 3s;">
+            style="top: 50%; left: 50%; width: 80px; animation-name: float2; animation-duration: 38s; animation-delay: 0s;">
     </div>
 
 
@@ -131,7 +140,8 @@
                     <a href="https://github.com/whatsup-ab78" target="_blank" title="GitHub">
                         <i class="fa-brands fa-github"></i>
                     </a>
-                    <a href="https://www.instagram.com/_.aravin_dan._/profilecard/?igsh=MWpycHkxcWxta21sbg==" target="_blank" title="Instagram">
+                    <a href="https://www.instagram.com/_.aravin_dan._/profilecard/?igsh=MWpycHkxcWxta21sbg=="
+                        target="_blank" title="Instagram">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/aravind-biju-884a08350/" target="_blank" title="LinkedIn">
@@ -149,11 +159,55 @@
     </section>
 
     <section id="projects">
-        <h2>Projects</h2>
-        <p>
-            Some of my mini-projects include this portfolio, a to-do list app, and a weather checker. More coming soon
-            as I learn and build.
-        </p>
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+            <!-- Project Card 1: To-Do List App -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="img/Portfolio Screenshot.png"
+                        alt="portfolio">
+                </div>
+                <div class="project-info">
+                    <h3>Personal Portfolio</h3>
+                    <p>A modern, responsive portfolio website showcasing my profile, skills, and journey — built with a focus on minimal design, smooth interactions, and clean structure.</p>
+                    <div class="project-tech-list">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://whatsup-ab78.github.io/portfolio/" target="_blank" class="btn">Live Demo <i class="fas fa-external-link-alt"></i></a>
+                        <a href="https://github.com/whatsup-ab78/portfolio" target="_blank" class="btn">View Code <i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 2: Saplingo -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="img/Saplingo2.png"
+                        alt="Saplingo Screenshot">
+                </div>
+                <div class="project-info">
+                    <h3>Saplingo</h3>
+                    <p>Saplingo is an e-commerce stands out with the concept of a website to buy and sell saplings. It was done with a team of two as a part of final year mini-project.</p>
+                    <div class="project-tech-list">
+                        <span>PHP</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>MySQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="btn">Live Demo <i class="fas fa-external-link-alt"></i></a>
+                        <a href="https://github.com/whatsup-ab78/Saplingo" target="_blank" class="btn">View Code <i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" class="btn">Contributor Profile</i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more project cards here! -->
+
+        </div>
     </section>
 
     <section id="journey">
@@ -165,7 +219,26 @@
     </section>
 
     <script>
+
         document.addEventListener("DOMContentLoaded", () => {
+            // --- Script for Loading Screen ---
+            const loader = document.getElementById("loader-wrapper");
+
+            window.addEventListener("load", () => {
+                // This function will run after 5 seconds
+                setTimeout(() => {
+                    // Hide the loader with the fade-out effect
+                    loader.classList.add("hidden");
+
+                    // Completely remove the loader from the page after the fade-out animation is complete
+                    setTimeout(() => {
+                        if (loader) { // Check if loader exists before trying to remove it
+                            loader.style.display = 'none';
+                        }
+                    }, 800);
+
+                }, 3000);
+            });
             // --- Script for active nav link on scroll ---
             const sections = document.querySelectorAll("section");
             const navLinksDesktop = document.querySelectorAll(".nav-center a");
