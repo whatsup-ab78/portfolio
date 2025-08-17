@@ -10,23 +10,20 @@
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    /* Ensures it's on top of everything */
     transition: opacity 0.75s ease;
-    /* Smooth fade-out */
 }
 
-/* Container for the logo and text */
+
 .loader-logo-container {
     text-align: center;
 }
 
-/* The spinning/pulsing logo */
+
 .loader-logo {
     height: 80px;
     width: 80px;
     border-radius: 50%;
     animation: pulse 2.3s infinite ease-in-out;
-    /* Slower pulse for a calmer feel */
 }
 
 /* The text below the logo */
@@ -38,7 +35,7 @@
     opacity: 0.8;
 }
 
-/* Keyframe animation for the pulse effect */
+/* Pulse effect for loading screen */
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -56,11 +53,9 @@
     }
 }
 
-/* Class to hide the loader */
 #loader-wrapper.hidden {
     opacity: 0;
     pointer-events: none;
-    /* Disables interaction when invisible */
 }
 
 * {
@@ -78,12 +73,9 @@ body {
     font-family: 'Segoe UI', sans-serif;
     scroll-behavior: smooth;
     position: relative;
-    /* Needed for z-index stacking */
     overflow-x: hidden;
-    /* Prevents horizontal scroll from floating icons */
 }
 
-/* --- Floating Background Images --- */
 .bg-image-container {
     position: fixed;
     top: 0;
@@ -91,21 +83,18 @@ body {
     width: 100%;
     height: 100vh;
     z-index: -1;
-    /* Place it behind all content */
     overflow: hidden;
 }
 
 .floating-img {
     position: absolute;
     opacity: 0.15;
-    /* Make them subtle */
     filter: brightness(0.4) invert(1);
-    /* Dark and matching theme */
     animation: float 20s infinite linear;
     user-select: none;
 }
 
-/* Keyframes for the floating animation */
+/* keyframes(floating objects) */
 @keyframes float {
     0% {
         transform: translateY(0) rotate(0deg);
@@ -123,7 +112,6 @@ body {
     }
 }
 
-/* Second animation for more variety */
 @keyframes float2 {
     0% {
         transform: translateY(0) rotate(0deg);
@@ -141,9 +129,8 @@ body {
     }
 }
 
-/* --- All other styles remain the same until the #about section --- */
+/* Navbar begins!! */
 
-/* --- New Attractive Navbar Styles --- */
 nav.navbar {
     position: fixed;
     width: 100%;
@@ -180,7 +167,6 @@ nav.navbar {
     font-size: 1.4rem;
     font-weight: bold;
     color: #fff;
-    /* Changed to white */
 }
 
 .nav-links-wrapper {
@@ -191,7 +177,6 @@ nav.navbar {
 
 .nav-center a {
     color: #ccc;
-    /* Changed to light grey */
     text-decoration: none;
     margin: 0 15px;
     font-weight: 500;
@@ -202,22 +187,18 @@ nav.navbar {
 
 .nav-center a:hover {
     color: #fff;
-    /* Brighter white on hover */
     text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
 }
 
 .nav-center a.active {
     color: #fff;
-    /* Active link is white */
     border-bottom: 2px solid #fff;
-    /* White underline */
     font-weight: bold;
 }
 
 .nav-right .email {
     font-size: 0.95rem;
     color: #aaa;
-    /* Changed to a dimmer grey */
 }
 
 .hamburger {
@@ -225,7 +206,6 @@ nav.navbar {
     background: none;
     border: none;
     color: #fff;
-    /* Changed to white */
     font-size: 1.5rem;
     cursor: pointer;
     z-index: 101;
@@ -248,6 +228,8 @@ nav.navbar {
 }
 
 /* Navbar ends */
+
+/* home begins */
 
 .home-section {
     display: flex;
@@ -308,7 +290,6 @@ section {
     min-height: 100vh;
     text-align: center;
     position: relative;
-    /* Ensure sections stay on top of background */
     z-index: 1;
 }
 
@@ -369,19 +350,20 @@ p {
     transform: scale(1.1);
 }
 
-/* --- REVISED About Section --- */
+/* Home ends */
+
+/* about begins!! */
+
 
 #about {
     padding: 80px 30px;
     background-color: transparent;
-    /* Makes background images visible */
     color: #fff;
 }
 
 .about-grid {
     padding-top: 30px;
     display: grid;
-    /* Adjusted grid for better balance */
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
         "foundation toolkit"
@@ -400,7 +382,6 @@ p {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: left;
-    /* Better for lists */
 }
 
 .about-card:hover {
@@ -454,7 +435,6 @@ p {
 .social-card .social-links {
     display: flex;
     flex-direction: row;
-    /* Arrange icons horizontally */
     justify-content: center;
     gap: 30px;
     /* Space between icons */
@@ -570,6 +550,160 @@ p {
     margin-left: 8px;
     /* Space between text and icon */
 }
+
+/* --- My Journey Section --- */
+#journey {
+    background-color: transparent;
+    padding-bottom: 100px;
+}
+
+#journey h2 {
+    margin-bottom: 80px;
+}
+
+.journey-timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.journey-timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: rgba(255, 255, 255, 0.15);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    border-radius: 2px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+}
+
+.timeline-icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: -25px;
+    top: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    color: #fff;
+    backdrop-filter: blur(5px);
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-item:nth-child(even) .timeline-icon {
+    left: -25px;
+}
+
+.timeline-content {
+    padding: 25px 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    position: relative;
+    border-radius: 16px;
+    text-align: left;
+    
+    opacity: 0;
+    transform: translateY(20px);
+    /* Updated transition to include hover effects */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.4s ease;
+}
+
+/* HOVER EFFECT: Add lift and glow on hover */
+.timeline-item.visible .timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-item.visible .timeline-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.timeline-content::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 32px;
+    width: 0;
+    z-index: 1;
+    border: solid 10px;
+    border-color: transparent transparent transparent rgba(255, 255, 255, 0.1);
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    text-align: right;
+}
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+    right: -20px;
+    transform: rotate(180deg);
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+    left: -20px;
+}
+
+.timeline-date {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.timeline-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.timeline-content p {
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* NEW: Styles for the photo container */
+.timeline-photo {
+    margin-top: 20px;
+    width: 100%;
+    height: 150px; /* Consistent height for all photos */
+    overflow: hidden;
+    border-radius: 8px; /* Softer corners for the image */
+    background-color: rgba(0, 0, 0, 0.2); /* Placeholder color */
+}
+
+.timeline-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+}
+
+/* my journey ends */
 
 /* --- Footer Section --- */
 footer {

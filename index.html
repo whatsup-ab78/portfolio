@@ -14,7 +14,7 @@
     <!-- START of the Loader HTML -->
     <div id="loader-wrapper">
         <div class="loader-logo-container">
-            <img src="img/Black and White Modern Circle Iniatial Logo.jpg" alt="Logo" class="loader-logo">
+            <img src="img/AB logo.jpg" alt="Logo" class="loader-logo">
             <p class="loader-text">Hold Tight...</p>
         </div>
     </div>
@@ -50,7 +50,7 @@
 
     <nav class="navbar">
         <div class="nav-left">
-            <img src="img/Black and White Modern Circle Iniatial Logo.jpg" alt="Logo" class="logo">
+            <img src="img/AB logo.jpg" alt="Logo" class="logo">
             <span class="nav-name">Aravindan</span>
         </div>
         <div class="nav-links-wrapper">
@@ -207,23 +207,85 @@
                 </div>
             </div>
 
-            <!-- Add more project cards here! -->
 
         </div>
     </section>
 
-    <section id="journey">
-        <h2>My Journey</h2>
-        <p>
-            From a curious learner to a tech enthusiast, my journey has been fueled by passion, mistakes, and
-            persistence. Stay tuned for the rest of the story.
-        </p>
-    </section>
+<!-- ======================= MY JOURNEY SECTION ======================= -->
+<section id="journey">
+    <h2>My Journey</h2>
+    <div class="journey-timeline">
+
+        <!-- TIMELINE ITEM 1 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <i class="fa-solid fa-code"></i>
+            </div>
+            <div class="timeline-content">
+                <span class="timeline-date">2021</span>
+                <h3>The First Spark</h3>
+                <p>My journey began with the fundamentals of C++ and Java, which sparked my passion for logical problem-solving and software development.</p>
+                <!-- Add your photo here -->
+                <div class="timeline-photo">
+                    <img src="img/first journey.png" alt="A photo representing the first coding steps">
+                </div>
+            </div>
+        </div>
+
+        <!-- TIMELINE ITEM 2 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <i class="fa-solid fa-globe"></i>
+            </div>
+            <div class="timeline-content">
+                <span class="timeline-date">2022</span>
+                <h3>Venturing into Web</h3>
+                <p>Explored the world of web development, getting hands-on experience with HTML, CSS, and JavaScript to build my first interactive websites.</p>
+                <!-- Add your photo here -->
+                <div class="timeline-photo">
+                    <img src="https://placehold.co/400x250/000000/333333?text=First+Website" alt="A photo of an early web project">
+                </div>
+            </div>
+        </div>
+        
+        <!-- TIMELINE ITEM 3 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <div class="timeline-content">
+                <span class="timeline-date">2023</span>
+                <h3>Building Full-Stack</h3>
+                <p>Dived deeper by learning the MERN stack (MongoDB, Express, React, Node.js), building complete applications from the database to the user interface.</p>
+                <!-- Add your photo here -->
+                <div class="timeline-photo">
+                    <img src="https://placehold.co/400x250/000000/333333?text=MERN+Stack" alt="A photo related to full-stack development">
+                </div>
+            </div>
+        </div>
+
+        <!-- TIMELINE ITEM 4 -->
+        <div class="timeline-item">
+            <div class="timeline-icon">
+                <i class="fa-solid fa-rocket"></i>
+            </div>
+            <div class="timeline-content">
+                <span class="timeline-date">Today</span>
+                <h3>Future & Beyond</h3>
+                <p>Currently expanding my skills in cloud technologies and advanced backend systems, always eager for the next challenge and opportunity to grow.</p>
+                <!-- Add your photo here -->
+                <div class="timeline-photo">
+                    <img src="https://placehold.co/400x250/000000/333333?text=The+Future" alt="A photo symbolizing future goals">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
     <!-- ======================= FOOTER ======================= -->
 <footer>
     <div class="footer-content">
         <div class="footer-info">
-            <!-- This is the new centered paragraph -->
             <p>Made with HTML, CSS, JS & Creativity 🤍</p>
         </div>
         <div class="footer-social-and-nav">
@@ -244,74 +306,85 @@
     </div>
 </footer>
 
-    <!-- Your <script> tag should be right after this -->
+   
     <script>
-
-        document.addEventListener("DOMContentLoaded", () => {
-            // --- Script for Loading Screen ---
-            const loader = document.getElementById("loader-wrapper");
-
-            window.addEventListener("load", () => {
-                // This function will run after 5 seconds
+    document.addEventListener("DOMContentLoaded", () => {
+        // --- Script for Loading Screen ---
+        const loader = document.getElementById("loader-wrapper");
+        window.addEventListener("load", () => {
+            setTimeout(() => {
+                loader.classList.add("hidden");
                 setTimeout(() => {
-                    // Hide the loader with the fade-out effect
-                    loader.classList.add("hidden");
+                    if (loader) {
+                        loader.style.display = 'none';
+                    }
+                }, 800);
+            }, 5000);
+        });
 
-                    // Completely remove the loader from the page after the fade-out animation is complete
-                    setTimeout(() => {
-                        if (loader) { // Check if loader exists before trying to remove it
-                            loader.style.display = 'none';
-                        }
-                    }, 800);
+        // --- Script for active nav link on scroll ---
+        const sections = document.querySelectorAll("section");
+        const navLinksDesktop = document.querySelectorAll(".nav-center a");
+        function updateActiveLink() {
+            let index = sections.length;
+            while (--index >= 0 && window.scrollY + 150 < sections[index].offsetTop) {}
+            navLinksDesktop.forEach((link) => link.classList.remove("active"));
+            if (navLinksDesktop[index]) navLinksDesktop[index].classList.add("active");
+        }
+        updateActiveLink();
+        window.addEventListener("scroll", updateActiveLink);
 
-                }, 3000);
-            });
-            // --- Script for active nav link on scroll ---
-            const sections = document.querySelectorAll("section");
-            const navLinksDesktop = document.querySelectorAll(".nav-center a");
-            function updateActiveLink() {
-                let index = sections.length;
-                while (--index >= 0 && window.scrollY + 150 < sections[index].offsetTop) { }
-                navLinksDesktop.forEach((link) => link.classList.remove("active"));
-                if (navLinksDesktop[index]) navLinksDesktop[index].classList.add("active");
+        // --- Script for hamburger menu ---
+        const hamburgerButton = document.getElementById("hamburger-button");
+        const navLinksWrapper = document.querySelector(".nav-links-wrapper");
+        const navLinksMobile = document.querySelectorAll(".nav-center a");
+        const body = document.querySelector("body");
+
+        hamburgerButton.addEventListener("click", () => {
+            navLinksWrapper.classList.toggle("active");
+            const icon = hamburgerButton.querySelector("i");
+            if (navLinksWrapper.classList.contains("active")) {
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-times");
+                body.style.overflow = 'hidden';
+            } else {
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+                body.style.overflow = 'auto';
             }
-            updateActiveLink();
-            window.addEventListener("scroll", updateActiveLink);
+        });
 
-            // --- Script for hamburger menu ---
-            const hamburgerButton = document.getElementById("hamburger-button");
-            const navLinksWrapper = document.querySelector(".nav-links-wrapper");
-            const navLinksMobile = document.querySelectorAll(".nav-center a");
-            const body = document.querySelector("body");
-
-            hamburgerButton.addEventListener("click", () => {
-                navLinksWrapper.classList.toggle("active");
-                const icon = hamburgerButton.querySelector("i");
+        // Close menu when a link is clicked
+        navLinksMobile.forEach(link => {
+            link.addEventListener("click", () => {
                 if (navLinksWrapper.classList.contains("active")) {
-                    icon.classList.remove("fa-bars");
-                    icon.classList.add("fa-times");
-                    body.style.overflow = 'hidden';
-                } else {
+                    navLinksWrapper.classList.remove("active");
+                    const icon = hamburgerButton.querySelector("i");
                     icon.classList.remove("fa-times");
                     icon.classList.add("fa-bars");
                     body.style.overflow = 'auto';
                 }
             });
-
-            // Close menu when a link is clicked
-            navLinksMobile.forEach(link => {
-                link.addEventListener("click", () => {
-                    if (navLinksWrapper.classList.contains("active")) {
-                        navLinksWrapper.classList.remove("active");
-                        const icon = hamburgerButton.querySelector("i");
-                        icon.classList.remove("fa-times");
-                        icon.classList.add("fa-bars");
-                        body.style.overflow = 'auto';
-                    }
-                });
-            });
         });
-    </script>
+
+        // --- Script for Journey Timeline Animation on Scroll (NEW and IMPROVED) ---
+        const timelineItems = document.querySelectorAll(".timeline-item");
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        }, {
+            threshold: 0.1 
+        });
+
+        timelineItems.forEach(item => {
+            observer.observe(item);
+        });
+    });
+</script>
 </body>
 
 </html>
