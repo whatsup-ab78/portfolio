@@ -462,9 +462,10 @@ p {
 /* --- Projects Section --- */
 
 .disabled-link {
-  pointer-events: none;
-  opacity: 0.5;   /* (optional) visually show it’s disabled */
-  cursor: default;
+    pointer-events: none;
+    opacity: 0.5;
+    /* (optional) visually show it’s disabled */
+    cursor: default;
 }
 
 
@@ -630,7 +631,7 @@ p {
     position: relative;
     border-radius: 16px;
     text-align: left;
-    
+
     opacity: 0;
     transform: translateY(20px);
     /* Updated transition to include hover effects */
@@ -699,14 +700,16 @@ p {
     margin-top: 20px;
     width: 100%;
     overflow: hidden;
-    border-radius: 8px; /* Softer corners for the image */
-    background-color: rgba(0, 0, 0, 0.2); /* Placeholder color */
+    border-radius: 8px;
+    /* Softer corners for the image */
+    background-color: rgba(0, 0, 0, 0.2);
+    /* Placeholder color */
 }
 
 .timeline-photo img {
     width: 100%;
     height: auto;
-    object-fit: cover; 
+    object-fit: cover;
 }
 
 /* my journey ends */
@@ -779,7 +782,7 @@ footer {
     border-radius: 50%;
     font-size: 1.2rem;
     text-decoration: none;
-    transition: background-color 0.5s ease, transform 0.5s ease; 
+    transition: background-color 0.5s ease, transform 0.5s ease;
 }
 
 .footer-back-to-top a:hover {
@@ -944,5 +947,51 @@ footer {
         margin-top: 20px;
         flex-direction: column;
         gap: 25px;
+    }
+
+    .journey-timeline::after {
+        left: 25px;
+    }
+
+    /* Adjust the item's padding to create more content space */
+    .timeline-item {
+        width: 100%;
+        padding-left: 65px;
+        /* Reduced from 70px */
+        padding-right: 20px;
+        /* Increased slightly for balance */
+    }
+
+    /* Ensure items take up the full width */
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+
+    /* Reposition the icon to align with the new line position */
+    .timeline-icon {
+        left: 0;
+        /* Align with the new line at 25px */
+    }
+
+    .timeline-item:nth-child(even) .timeline-icon {
+        left: 0;
+    }
+
+    /* Crucially, reduce the internal padding of the content card */
+    .timeline-content {
+        padding: 20px;
+        /* Reduced from 25px 30px */
+        text-align: left !important;
+    }
+
+    /* Re-align the small arrow to point correctly */
+    .timeline-item:nth-child(odd) .timeline-content::before,
+    .timeline-item:nth-child(even) .timeline-content::before {
+        left: -18px;
+        /* Adjusted position */
+        top: 30px;
+        transform: none;
+        border-color: transparent rgba(255, 255, 255, 0.1) transparent transparent;
     }
 }
